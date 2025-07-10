@@ -9,6 +9,7 @@ export default class Input extends LightningElement {
   @api showObjectName;
   @api fieldIndex;
   @api objectName;
+  @api fieldApiName;
   @api get defaultValue() {
     return this._defaultValue;
   }

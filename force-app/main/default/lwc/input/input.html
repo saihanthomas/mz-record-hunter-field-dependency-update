@@ -27,7 +27,7 @@
   </template>
   <template if:true={isSelection}>
     <c-multi-select-combobox data-name="multi-select-combobox" label={label} options={options}
-      values={defaultValue.value}>
+      values={defaultValue.value} field-api-name={fieldApiName}>
     </c-multi-select-combobox>
   </template>
   <template if:true={isDateRange}>

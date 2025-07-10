@@ -1,4 +1,5 @@
 <template>
+  <c-field-dependency-handler field-api-name={fieldApiName} ondependencymapready={handleDependencyMapReady}></c-field-dependency-handler>
   <div class="slds-form-element">
     <label class="slds-form-element__label">{label}</label>
     <div class="slds-form-element__control">
@@ -18,9 +19,16 @@
             <section aria-label="Language Options" class={dialogClass} role="dialog" onclick={onDialogClicked}
               style="position: absolute; top: 32px">
               <div class="slds-popover__body slds-popover__body_small">
-                <lightning-dual-listbox label={label} source-label={sourceLabel} selected-label={selectedLabel}
-                  options={options} value={values} onchange={onSelectedOptionsChanged} variant="label-hidden" size="5"
-                  disable-reordering="true"></lightning-dual-listbox>
+                <template if:true={isMiddleClassField}>
+                  <lightning-dual-listbox label={label} source-label={sourceLabel} selected-label={selectedLabel}
+                    options={filteredOptions} value={values} onchange={onSelectedOptionsChanged} variant="label-hidden" size="5"
+                    disable-reordering="true"></lightning-dual-listbox>
+                </template>
+                <template if:false={isMiddleClassField}>
+                  <lightning-dual-listbox label={label} source-label={sourceLabel} selected-label={selectedLabel}
+                    options={options} value={values} onchange={onSelectedOptionsChanged} variant="label-hidden" size="5"
+                    disable-reordering="true"></lightning-dual-listbox>
+                </template>
               </div>
               <footer class="slds-popover__footer slds-popover__footer_form">
                 <lightning-button variant="Neutral" label="キャンセル" onclick={onCancelClicked}></lightning-button>

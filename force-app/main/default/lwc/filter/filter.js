@@ -173,7 +173,8 @@ export default class Filter extends InteractiveLightningElement {
           default: defaultValues[i],
           index: i + 1,
           showObjectName: field.showObjectName,
-          columnSize: field.columnSize || DEFAULT_COLUMN_SIZE
+          columnSize: field.columnSize || DEFAULT_COLUMN_SIZE,
+          fieldApiName: inputInfo.fieldApiName
         });
       }
     }
